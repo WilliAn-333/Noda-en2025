@@ -190,8 +190,10 @@ public class NuevaInterfas extends javax.swing.JFrame {
 
     private void ckbxMaterialAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbxMaterialAActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_ckbxMaterialAActionPerformed
-
+         String [] datosUsuario = new String[6];
     private void btnRegistrarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPActionPerformed
         String nombre = txtNombreP.getText();
         String categoria = (String) cbxCategoria.getSelectedItem();
@@ -205,7 +207,18 @@ public class NuevaInterfas extends javax.swing.JFrame {
         turno ="Mañana";
         }else
         if (turnoTarde){
-        turno="Tarde";}         // TODO add your handling code here:
+        turno="Tarde";}     
+        
+        
+       datosUsuario[0]=nombre;
+       datosUsuario[1]=categoria;
+       datosUsuario[2]=almuerzo;
+       datosUsuario[3]=transporte;
+       datosUsuario[4]=material;
+       datosUsuario[5]=turno;
+
+
+// TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarPActionPerformed
 
     private void rbtMananaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtMananaActionPerformed
