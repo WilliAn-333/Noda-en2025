@@ -40,6 +40,8 @@ public class NuevaInterfas extends javax.swing.JFrame {
         rbtTarde = new javax.swing.JRadioButton();
         btnRegistrarP = new javax.swing.JButton();
         btnMostrarR = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -96,6 +98,11 @@ public class NuevaInterfas extends javax.swing.JFrame {
         btgAsistencia.add(rbtTarde);
         rbtTarde.setFont(new java.awt.Font("Harrington", 3, 12)); // NOI18N
         rbtTarde.setText("TARDE");
+        rbtTarde.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtTardeActionPerformed(evt);
+            }
+        });
 
         btnRegistrarP.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         btnRegistrarP.setText("REGISTRAR PARTICIPANTE");
@@ -107,6 +114,15 @@ public class NuevaInterfas extends javax.swing.JFrame {
 
         btnMostrarR.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         btnMostrarR.setText("MOSTRAR REGISTRO");
+        btnMostrarR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarRActionPerformed(evt);
+            }
+        });
+
+        txtArea.setColumns(20);
+        txtArea.setRows(5);
+        jScrollPane1.setViewportView(txtArea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,27 +141,29 @@ public class NuevaInterfas extends javax.swing.JFrame {
                         .addComponent(txtNombreP, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(ckbxAlmuerzo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                        .addComponent(ckbxTransporte)
-                        .addGap(30, 30, 30)
-                        .addComponent(ckbxMaterialA)
-                        .addGap(51, 51, 51))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRegistrarP)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(rbtManana)
+                                .addGap(36, 36, 36)
+                                .addComponent(rbtTarde))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblCategoriaP)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cbxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(ckbxAlmuerzo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                        .addComponent(ckbxTransporte)
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnMostrarR)
+                            .addComponent(ckbxMaterialA)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addComponent(rbtManana)
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbtTarde)
-                    .addComponent(btnMostrarR))
+                .addGap(22, 22, 22)
+                .addComponent(btnRegistrarP)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -166,15 +184,17 @@ public class NuevaInterfas extends javax.swing.JFrame {
                     .addComponent(ckbxAlmuerzo)
                     .addComponent(ckbxTransporte)
                     .addComponent(ckbxMaterialA))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbtManana)
                     .addComponent(rbtTarde))
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrarP)
                     .addComponent(btnMostrarR))
-                .addGap(51, 51, 51))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -197,9 +217,9 @@ public class NuevaInterfas extends javax.swing.JFrame {
     private void btnRegistrarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPActionPerformed
         String nombre = txtNombreP.getText();
         String categoria = (String) cbxCategoria.getSelectedItem();
-        String almuerzo =  Boolean.toString(ckbxAlmuerzo.isSelected());
-        String transporte = Boolean.toString(ckbxTransporte.isSelected());
-        String material = Boolean.toString(ckbxMaterialA.isSelected());
+        String almuerzo =  ckbxAlmuerzo.isSelected()?"Almuerzo":" ";
+        String transporte = ckbxTransporte.isSelected()?"Transporte":" ";
+        String material = ckbxMaterialA.isSelected()?"Material de apoyo":" ";
         Boolean turnoManana= rbtManana.isSelected();
         Boolean turnoTarde = rbtTarde.isSelected();
         String turno ="";
@@ -225,6 +245,22 @@ public class NuevaInterfas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtMananaActionPerformed
 
+    private void rbtTardeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtTardeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtTardeActionPerformed
+
+    private void btnMostrarRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarRActionPerformed
+        String datos = ""; // Iniciamos una cadena vacía
+        for (int i = 0;i < 6;i++) {
+            System.out.println("");
+            datos = datos+" , " + datosUsuario[i];
+        }
+        txtArea.setText(datos);
+    
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMostrarRActionPerformed
+
    
     
 
@@ -237,11 +273,15 @@ public class NuevaInterfas extends javax.swing.JFrame {
     private javax.swing.JCheckBox ckbxAlmuerzo;
     private javax.swing.JCheckBox ckbxMaterialA;
     private javax.swing.JCheckBox ckbxTransporte;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCategoriaP;
     private javax.swing.JLabel lblNombreP;
     private javax.swing.JLabel lblSRPPE;
     private javax.swing.JRadioButton rbtManana;
     private javax.swing.JRadioButton rbtTarde;
+    private javax.swing.JTextArea txtArea;
     private javax.swing.JTextField txtNombreP;
     // End of variables declaration//GEN-END:variables
 }
+
+

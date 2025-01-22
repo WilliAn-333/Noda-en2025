@@ -11,6 +11,9 @@ package ec.edu.espoch.otraves2025;
 public class Otraves2025 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        
+        NuevaInterfas objNinterfaz= new NuevaInterfas();
+        objNinterfaz.setVisible(true);
+        
     }
 }
